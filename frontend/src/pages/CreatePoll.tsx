@@ -56,7 +56,7 @@ const CreatePoll = () => {
           <input
             {...register('question')}
             placeholder="Question"
-            className="border p-2 rounded start items-start w-full"
+            className="border border-gray-300  p-2 rounded start items-start w-full"
           />
         </div>
 
@@ -68,7 +68,7 @@ const CreatePoll = () => {
             <input
               {...register(`options.${index}.value`)}
               placeholder={`Option #${index + 1}`}
-              className="border p-2 rounded w-full"
+              className="border border-gray-300 p-2 rounded w-full"
             />
             <button
               type="button"

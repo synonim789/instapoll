@@ -1,10 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import ky from 'ky'
 import { useForm, type SubmitHandler } from 'react-hook-form'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
+import { useAuth } from '../auth/AuthContext'
 import { signUpSchema, type SignUpSchemaType } from '../schemas/auth'
 
 const SignUp = () => {
+  const { login } = useAuth()
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -25,7 +28,8 @@ const SignUp = () => {
         })
         .json<{ token: string }>()
 
-      console.log(token)
+      login(token)
+      navigate('/polls')
     } catch (error) {
       console.log(error)
     }
